@@ -96,7 +96,7 @@ zion-aicoding-rules/
 1. 在 Cursor 的聊天框中，直接请求 AI 助手下载规则：
    ```
    请帮我下载并安装 zion-aicoding-rules 规则，GitHub 仓库地址是：
-   https://github.com/your-username/zion-aicoding-rules
+   https://github.com/functorz-tech/zion-aicoding-rules
    ```
 
 2. AI 助手会自动：
@@ -148,15 +148,6 @@ AI 助手将：
 * 身份验证令牌处理
 * 项目结构和约定
 
-**关键概念**：
-
-```typescript
-// HTTP 端点
-https://zion-app.functorz.com/zero/{projectExId}/api/graphql-v2
-
-// WebSocket 端点
-wss://zion-app.functorz.com/zero/{projectExId}/api/graphql-subscription
-```
 
 ### 2. `zion-database-gql-api-rules`
 
