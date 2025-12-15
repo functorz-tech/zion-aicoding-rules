@@ -6,7 +6,7 @@
 
 ## 🎯 本仓库提供的内容
 
-本仓库包含 **9 个专业规则文件**：
+本仓库包含 **10 个专业规则文件**：
 
 1. **理解 Zion 的架构** - 后端结构、GraphQL 端点、身份验证
 2. **查询和变更数据库** - 从数据模型自动生成的 GraphQL schema
@@ -17,10 +17,11 @@
 7. **管理二进制资源** - 图片/文件上传和管理
 8. **获取项目 Schema** - MCP 服务器集成，实时访问 schema
 9. **UI 设计规范** - 基于 Apple 设计风格的 React UI 设计规则
+10. **Zeabur 部署规范** - 在 Zeabur 平台部署 React + TypeScript + Vite 项目的最佳实践
 
 ## 📦 包含的规则文件
 
-本仓库包含 **9 个规则文件**，均为 `.mdc` 格式（Markdown with frontmatter），位于仓库根目录：
+本仓库包含 **10 个规则文件**，均为 `.mdc` 格式（Markdown with frontmatter），位于仓库根目录：
 
 ```
 zion-aicoding-rules/
@@ -32,7 +33,8 @@ zion-aicoding-rules/
 ├── zion-payment-rules.mdc                # 支付处理（支付宝、微信支付等）
 ├── zion-binary-asset-upload-rules.mdc    # 文件管理
 ├── zion-development-best-practices.mdc   # 开发最佳实践
-└── ui-design-rules.mdc                   # UI 设计规范（Apple 风格）
+├── ui-design-rules.mdc                   # UI 设计规范（Apple 风格）
+└── zeabur-deployment-rules.mdc           # Zeabur 平台部署规范
 ```
 
 所有规则文件都包含 frontmatter 元数据（`description` 和 `alwaysApply`），会被 Cursor 正确识别和应用。
@@ -258,6 +260,23 @@ query GetPostsWithAuthors($limit: Int) {
 * 流畅自然的动画过渡
 * 系统化、语义化的颜色体系
 * 充足的留白和清晰的层次结构
+
+### 10. `zeabur-deployment-rules`
+
+**用途**：Zeabur 平台部署规范和最佳实践  
+**教 AI**：
+* Zeabur 平台部署要求
+* 必需配置文件（tsconfig.json、vite.config.ts 等）
+* TypeScript 配置要求（兼容 TypeScript 4.9.5）
+* 构建和部署流程
+* 环境变量配置
+* 常见部署问题和解决方案
+
+**核心要求**：
+* 必须包含所有必需的配置文件
+* TypeScript 配置必须兼容 TypeScript 4.9.5
+* 必须使用正确的 moduleResolution 设置
+* 必须配置正确的构建脚本
 
 ## 💡 使用示例
 
