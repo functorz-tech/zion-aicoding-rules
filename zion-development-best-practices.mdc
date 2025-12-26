@@ -221,6 +221,60 @@ if (import.meta.env.DEV) { }
 3. 避免在 Provider 外部使用任何 GraphQL hooks
 4. 使用组件分离模式：Provider 包装器 + 业务组件
 
+### 手机号认证规范 [MUST]
+
+#### 手机号验证码和可选密码认证流程
+
+1. **发送验证码**：
+   - 在注册或登录时，可以可选地先发送验证码
+   - `verificationEnumType` 的有效值包括：`LOGIN`（登录）、`SIGN_UP`（注册）、`BIND`（绑定）、`UNBIND`（解绑）、`DEREGISTER`（注销）、`RESET_PASSWORD`（重置密码）
+   - 注册时使用 `SIGN_UP`，登录时使用 `LOGIN`
+   ```graphql 
+   mutation SendVerificationCodeToPhone(
+       $telephone: String!
+       $verificationEnumType: verificationEnumType!
+   ) {
+       sendVerificationCodeToPhone(
+       telephone: $telephone
+       verificationEnumType: $verificationEnumType
+       )
+   }
+   ``` 
+
+2. **手机号认证**：
+   - 认证时可以使用密码或验证码（或两者都使用）
+   - 如果提供了验证码，密码是可选的
+   - 注册时，设置 `register: true`
+   - 登录时，设置 `register: false`
+   ```graphql
+   mutation AuthenticateWithPhoneNumber(
+       $telephone: String!
+       $verificationCode: String
+       $password: String
+       $register: Boolean!
+   ) {
+       authenticateWithPhoneNumber(
+       telephone: $telephone
+       verificationCode: $verificationCode
+       password: $password
+       register: $register
+       ) {
+           account {
+               id
+               permissionRoles
+           }
+           jwt {
+               token
+           }
+       }
+   }
+   ```
+   
+   **注意事项**：
+   - `password` 和 `verificationCode` 至少需要提供其中一个
+   - 注册时，通常两者都需要（密码用于账户安全，验证码用于手机号验证）
+   - 登录时，可以使用密码或验证码中的任意一个
+
 ### 常见问题排查 [REFERENCE]
 
 #### TypeScript 编译错误
