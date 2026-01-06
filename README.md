@@ -6,7 +6,7 @@
 
 ## 🎯 本仓库提供的内容
 
-本仓库包含 **10 个专业规则文件**：
+本仓库包含 **12 个专业规则文件**：
 
 1. **理解 Zion 的架构** - 后端结构、GraphQL 端点、身份验证
 2. **查询和变更数据库** - 从数据模型自动生成的 GraphQL schema
@@ -18,10 +18,12 @@
 8. **获取项目 Schema** - MCP 服务器集成，实时访问 schema
 9. **UI 设计规范** - 基于有机/自然设计风格（Organic/Natural）的 React UI 设计规则
 10. **Zeabur 部署规范** - 在 Zeabur 平台部署 React + TypeScript + Vite 项目的最佳实践
+11. **微信小程序开发** - 微信小程序与 Zion 后端集成的特有规则和最佳实践
+12. **微信小程序支付** - 微信小程序中使用 Zion 后端进行微信支付的方法
 
 ## 📦 包含的规则文件
 
-本仓库包含 **10 个规则文件**，均为 `.mdc` 格式（Markdown with frontmatter），位于仓库根目录：
+本仓库包含 **12 个规则文件**，均为 `.mdc` 格式（Markdown with frontmatter），位于仓库根目录：
 
 ```
 zion-aicoding-rules/
@@ -34,7 +36,9 @@ zion-aicoding-rules/
 ├── zion-binary-asset-upload-rules.mdc    # 文件管理
 ├── zion-development-best-practices.mdc   # 开发最佳实践
 ├── ui-design-rules.mdc                   # UI 设计规范（有机/自然风格）
-└── zeabur-deployment-rules.mdc           # Zeabur 平台部署规范
+├── zeabur-deployment-rules.mdc           # Zeabur 平台部署规范
+├── wechat-miniprogram-rules.mdc          # 微信小程序开发规则
+└── wechat-miniprogram-payment-rules.mdc  # 微信小程序支付规则
 ```
 
 所有规则文件都包含 frontmatter 元数据（`description` 和 `alwaysApply`），会被 Cursor 正确识别和应用。
@@ -282,9 +286,62 @@ query GetPostsWithAuthors($limit: Int) {
 * 必须使用正确的 moduleResolution 设置
 * 必须配置正确的构建脚本
 
+### 11. `wechat-miniprogram-rules`
+
+**用途**：微信小程序与 Zion 后端集成的特有规则和最佳实践  
+**教 AI**：
+* 微信小程序特有的模块系统（CommonJS）
+* 使用 `wx.request` 进行 GraphQL 请求
+* 微信小程序文件结构（.wxml、.wxss、.wxs、.js）
+* 小程序生命周期和页面管理
+* 与 Zion 后端的身份验证集成
+* 文件上传到 Zion 存储
+* 小程序特有的错误处理和网络请求封装
+
+**核心规则**：
+* 必须使用 CommonJS 模块系统（`require`/`module.exports`）
+* 必须使用 `wx.request` 而非 `fetch` 或 `axios`
+* 必须遵循微信小程序的文件结构和命名规范
+* 必须正确处理小程序的生命周期和页面路由
+
+**适用场景**：
+* 开发微信小程序前端
+* 小程序与 Zion 后端 GraphQL API 集成
+* 小程序中的文件上传和管理
+* 小程序用户身份验证
+
+### 12. `wechat-miniprogram-payment-rules`
+
+**用途**：微信小程序中使用 Zion 后端进行微信支付的方法  
+**教 AI**：
+* 微信小程序原生支付集成
+* 订单创建和支付流程
+* 调用微信支付 API（`wx.requestPayment`）
+* 支付完成后查询订单状态
+* 支付错误处理和重试机制
+* 订单表配置和绑定
+
+**前置条件**：
+* 必须在 Zion 编辑器内配置订单表
+* 必须配置微信支付的 AppID、商户号、API 密钥等
+* 每个支付必须关联一个订单 ID
+
+**支付流程**：
+1. 创建订单（通过 Actionflow 或 GraphQL mutation）
+2. 获取微信支付参数（通过 GraphQL mutation）
+3. 调用 `wx.requestPayment` 发起支付
+4. 支付完成后查询订单状态
+5. 处理支付结果和错误
+
+**适用场景**：
+* 微信小程序中的商品购买
+* 小程序中的服务订阅
+* 小程序中的虚拟商品支付
+* 小程序中的会员充值
+
 ## 💡 使用示例
 
-### 示例 1: 使用 AI 助手构建博客
+### 示例 1: 使用 AI 助手构建博客（Web 应用）
 
 **你**："基于 Zion 项目后端创建一个 WEB 应用，项目 exId 是 xxxx"
 
@@ -294,6 +351,19 @@ query GetPostsWithAuthors($limit: Int) {
 * 配置 Apollo Client
 * 创建博客列表和详情页面
 * 实现实时更新（订阅）
+
+### 示例 2: 使用 AI 助手构建微信小程序
+
+**你**："基于 Zion 项目后端创建一个微信小程序，项目 exId 是 xxxx"
+
+**AI 将**：
+* 使用 MCP 获取项目 Schema
+* 创建微信小程序项目结构（app.json、pages、components）
+* 使用 `wx.request` 封装 GraphQL 请求
+* 实现小程序页面和组件（.wxml、.wxss、.js）
+* 集成 Zion 后端身份验证
+* 实现文件上传功能
+* 配置小程序支付流程（如需要）
 
 
 
@@ -306,12 +376,24 @@ query GetPostsWithAuthors($limit: Int) {
 **你**："构建一个社交媒体帖子创建流程，包含图片上传和高级功能的支付"
 
 **AI 将使用**：
-* `zion-backend-architecture` → 设置 Apollo Client
+* `zion-backend-architecture` → 设置 Apollo Client（Web）或 wx.request（小程序）
 * `zion-database-gql-api-rules` → 创建帖子变更
 * `zion-binary-asset-upload-rules` → 处理图片上传
 * `zion-actionflow-gql-api-rules` → 多步骤帖子创建工作流
-* `zion-payment-rules` → 支付宝支付
+* `zion-payment-rules` → 支付宝支付（Web）
+* `wechat-miniprogram-payment-rules` → 微信支付（小程序）
 * `zion-ai-agent-gql-api-rules` → AI 驱动的内容审核
+
+### 微信小程序开发工作流
+
+**你**："构建一个微信小程序电商应用，包含商品展示、购物车和微信支付"
+
+**AI 将使用**：
+* `wechat-miniprogram-rules` → 创建小程序项目结构和页面
+* `zion-backend-architecture` → 配置 GraphQL 请求封装
+* `zion-database-gql-api-rules` → 查询商品数据和创建订单
+* `wechat-miniprogram-payment-rules` → 实现微信支付流程
+* `zion-binary-asset-upload-rules` → 处理商品图片上传
 
 ## 🎯 最佳实践
 
@@ -387,6 +469,32 @@ Zion（[functorz.com](https://www.functorz.com)）是一款不用写代码也可
 
 ---
 
-_最后更新：2025年12月14日_
+## 📱 支持的开发场景
+
+本仓库的规则支持以下开发场景：
+
+### Web 应用开发
+- React + TypeScript + Vite 项目
+- Apollo Client 集成
+- 实时订阅（WebSocket）
+- 支付宝支付集成
+- Zeabur 平台部署
+
+### 微信小程序开发
+- 微信小程序原生开发
+- CommonJS 模块系统
+- wx.request 网络请求
+- 微信支付集成
+- 小程序文件上传
+
+### AI Agent 开发
+- RAG 检索增强生成
+- 多模态输入输出
+- 工具使用和函数调用
+- 结构化 JSON 输出
+
+---
+
+_最后更新：2025年1月_
 
 
