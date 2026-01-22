@@ -1,14 +1,14 @@
-# Zion Cursor Skills - 使用 Zion 后端构建自定义前端应用
+# Zion Cursor Rules - 使用 Zion 后端构建自定义前端应用
 
-> **预构建的 Cursor Skills，用于开发基于 Zion（[functorz.com](https://www.functorz.com)）作为后端即服务（BaaS）的自定义前端应用**
+> **预构建的 Cursor Rules，用于开发基于 Zion（[functorz.com](https://www.functorz.com)）作为后端即服务（BaaS）的自定义前端应用**
 
-本仓库包含一套**生产就绪的 Cursor Skills**，使 AI Coding 工具（推荐Cursor）能够无缝集成 Zion 强大的后端基础设施。使用这些 Skills 可以快速构建全栈应用，同时利用 Zion 的企业级 PostgreSQL 数据库、GraphQL API、Actionflow、AI Agent 等功能。
+本仓库包含一套**生产就绪的 Cursor Rules**，使 AI Coding 工具（推荐Cursor）能够无缝集成 Zion 强大的后端基础设施。使用这些 Rules 可以快速构建全栈应用，同时利用 Zion 的企业级 PostgreSQL 数据库、GraphQL API、Actionflow、AI Agent 等功能。
 
-> **注意**：本仓库适用于 Cursor 2.3.41 及以上版本，使用新的 Skills 系统（`.cursor/skills/` 目录结构）。
+> **注意**：本仓库使用 Cursor Rules 格式（`.mdc` 文件），适用于 **Cursor 2.4.18 及以上版本**。文件位于仓库根目录，可直接复制到项目的 `.cursor/rules/` 目录使用。
 
 ## 🎯 本仓库提供的内容
 
-本仓库包含 **12 个专业 Skills 文件**：
+本仓库包含 **12 个专业 Rules 文件**：
 
 1. **理解 Zion 的架构** - 后端结构、GraphQL 端点、身份验证
 2. **查询和变更数据库** - 从数据模型自动生成的 GraphQL schema
@@ -23,52 +23,38 @@
 11. **微信小程序开发** - 微信小程序与 Zion 后端集成的特有规则和最佳实践
 12. **微信小程序支付** - 微信小程序中使用 Zion 后端进行微信支付的方法
 
-## 📦 包含的 Skills 文件
+## 📦 包含的 Rules 文件
 
-本仓库包含 **12 个 Skills 文件**，均为 `SKILL.md` 格式（Markdown with YAML frontmatter），每个 Skill 位于独立的目录中：
+本仓库包含 **12 个 Rules 文件**，均为 `.mdc` 格式（Markdown with YAML frontmatter），位于仓库根目录：
 
 ```
 zion-aicoding-rules/
-├── zion-backend-architecture/
-│   └── SKILL.md                          # 核心架构和 GraphQL 设置
-├── zion-database-gql-api/
-│   ├── SKILL.md                          # 数据库 CRUD 操作
-│   └── references/
-│       └── detailed-reference.md         # 详细参考文档
-├── zion-actionflow-gql-api/
-│   └── SKILL.md                          # 后端工作流和业务逻辑
-├── zion-tpa-gql-api/
-│   └── SKILL.md                          # 第三方 API 集成
-├── zion-ai-agent-gql-api/
-│   └── SKILL.md                          # AI Agent 功能
-├── zion-payment/
-│   └── SKILL.md                          # 支付处理（支付宝、微信支付等）
-├── zion-binary-asset-upload/
-│   └── SKILL.md                          # 文件管理
-├── zion-development-best-practices/
-│   └── SKILL.md                          # 开发最佳实践
-├── ui-design-rules/
-│   └── SKILL.md                          # UI 设计规范（有机/自然风格）
-├── zeabur-deployment/
-│   └── SKILL.md                          # Zeabur 平台部署规范
-├── wechat-miniprogram/
-│   └── SKILL.md                          # 微信小程序开发规则
-└── wechat-miniprogram-payment/
-    └── SKILL.md                          # 微信小程序支付规则
+├── zion-backend-architecture.mdc         # 核心架构和 GraphQL 设置
+├── zion-database-gql-api-rules.mdc        # 数据库 CRUD 操作
+├── zion-actionflow-gql-api-rules.mdc      # 后端工作流和业务逻辑
+├── zion-tpa-gql-api-rules.mdc            # 第三方 API 集成
+├── zion-ai-agent-gql-api-rules.mdc       # AI Agent 功能
+├── zion-payment-rules.mdc                # 支付处理（支付宝、微信支付等）
+├── zion-binary-asset-upload-rules.mdc    # 文件管理
+├── zion-development-best-practices.mdc   # 开发最佳实践
+├── ui-design-rules.mdc                   # UI 设计规范（有机/自然风格）
+├── zeabur-deployment-rules.mdc           # Zeabur 平台部署规范
+├── wechat-miniprogram-rules.mdc         # 微信小程序开发规则
+└── wechat-miniprogram-payment-rules.mdc  # 微信小程序支付规则
 ```
 
-所有 Skills 文件都包含 YAML frontmatter 元数据（`description` 和 `alwaysApply`），会被 Cursor 2.3.41+ 正确识别和应用。
+所有 Rules 文件都包含 YAML frontmatter 元数据（`description` 和 `alwaysApply`），会被 Cursor 正确识别和应用。
 
 ## 🚀 快速开始
 
 ### 前置要求
 
-* Cursor 编辑器 2.3.41 及以上版本（支持 Cursor Skills 系统）
+* Cursor 编辑器 2.4.18 及以上版本
 * Zion（[functorz.com](https://www.functorz.com)）账号和项目
 
 ### 步骤 1: 在 Zion 中构建后端
 
-在使用这些 Skills 之前，你需要在 Zion 中创建后端基础设施：
+在使用这些 Rules 之前，你需要在 Zion 中创建后端基础设施：
 
 1. **注册** Zion（[functorz.com](https://www.functorz.com)）并创建新项目
 2. **设计数据库** - 创建表、定义关系、设置数据模型（可以使用 Zion AI 数据库助手）
@@ -107,25 +93,25 @@ zion-aicoding-rules/
    - `get_project_schema` - 获取项目 Schema
    - `reauth` - 重新进行 OAuth 认证
 
-### 步骤 3: 导入 Skills 到项目
+### 步骤 3: 导入 Rules 到项目
 
 #### 通过 Cursor 聊天框下载（推荐）
 
 这是最简单且可靠的方式：
 
-1. 在 Cursor 的聊天框中，直接请求 AI 助手下载 Skills：
+1. 在 Cursor 的聊天框中，直接请求 AI 助手下载 Rules：
    ```
-   请帮我下载并安装 zion-aicoding-rules Skills，GitHub 仓库地址是：
+   请帮我下载并安装 zion-aicoding-rules Rules，GitHub 仓库地址是：
    https://github.com/functorz-tech/zion-aicoding-rules
    ```
    
-   AI 助手会自动将 Skills 文件下载到项目的 `.cursor/skills/` 目录中。
+   AI 助手会自动将 Rules 文件下载到项目的 `.cursor/rules/` 目录中。
 
 #### 手动安装
 
 1. 克隆或下载本仓库
-2. 将各个 Skills 目录复制到你的项目根目录下的 `.cursor/skills/` 目录中
-3. 确保目录结构为：`.cursor/skills/技能名/SKILL.md`
+2. 将所有 `.mdc` 文件复制到你的项目根目录下的 `.cursor/rules/` 目录中
+3. 确保文件结构为：`.cursor/rules/*.mdc`
    
 ### 步骤 4: 开始构建
 
@@ -144,7 +130,7 @@ AI 助手将：
 * 处理文件上传
 * 集成支付功能
 
-## 📚 Skills 文件详解
+## 📚 Rules 文件详解
 
 ### 1. `zion-backend-architecture`
 
@@ -393,9 +379,9 @@ query GetPostsWithAuthors($limit: Int) {
 
 ## 🛠️ 高级工作流
 
-### 组合多个 Skills
+### 组合多个 Rules
 
-Skills 可以智能地协同工作。例如：
+Rules 可以智能地协同工作。例如：
 
 **你**："构建一个社交媒体帖子创建流程，包含图片上传和高级功能的支付"
 
@@ -450,7 +436,7 @@ Skills 可以智能地协同工作。例如：
 ### Cursor 和 AI 开发
 
 * [Cursor 官方文档](https://cursor.sh/docs)
-* Cursor Skills 最佳实践
+* Cursor Rules 最佳实践
 * [模型上下文协议 (MCP)](https://modelcontextprotocol.io)
 
 ### 社区和支持
@@ -462,28 +448,28 @@ Skills 可以智能地协同工作。例如：
 **准备构建你的下一个应用？**
 
 1. ⭐ Star 本仓库
-2. 📋 通过 Cursor 聊天框下载 Skills 到你的项目（推荐）或手动复制到 `.cursor/skills/` 目录
+2. 📋 通过 Cursor 聊天框下载 Rules 到你的项目（推荐）或手动复制 `.mdc` 文件到 `.cursor/rules/` 目录
 3. 🔌 配置 MCP 服务器
 4. 🚀 开始使用 AI 构建！
 
 **有问题？** 提交 issue 或通过 Zion 平台联系
 
-### Skills 类型说明
+### Rules 类型说明
 
-安装的 Skills 会根据其配置自动应用：
+安装的 Rules 会根据其配置自动应用：
 
 - **Always Apply**：每个聊天会话都会应用（`alwaysApply: true`）
 - **Apply Intelligently**：当 AI 判断相关时自动应用（`alwaysApply: false`）
 - **Apply to Specific Files**：当文件匹配指定模式时应用（`applyToFiles` 配置）
-- **Apply Manually**：在聊天中使用 `@技能名` 手动应用
+- **Apply Manually**：在聊天中使用 `@规则名` 手动应用
 
-### 更新 Skills
+### 更新 Rules
 
-当本仓库更新 Skills 后，你可以再次通过聊天框请求 AI 助手更新 Skills，或者手动下载最新的 Skills 文件到 `.cursor/skills/` 目录。
+当本仓库更新 Rules 后，你可以再次通过聊天框请求 AI 助手更新 Rules，或者手动下载最新的 `.mdc` 文件到 `.cursor/rules/` 目录。
 
-### ⚠️ 关于 Cursor 版本要求
+### ⚠️ 关于 Cursor 版本
 
-本仓库的 Skills 适用于 **Cursor 2.3.41 及以上版本**，使用新的 Skills 系统（`.cursor/skills/` 目录结构）。如果你使用的是旧版本的 Cursor，请升级到最新版本。
+本仓库使用 Cursor Rules 格式（`.mdc` 文件），适用于 **Cursor 2.4.18 及以上版本**。如果你使用的是 Cursor 2.3.41 及以上版本，也可以使用 Skills 格式的版本（请参考 [timqin-m/zion-aicoding-rules](https://github.com/timqin-m/zion-aicoding-rules)）。
 
 ---
 
@@ -495,7 +481,7 @@ Zion（[functorz.com](https://www.functorz.com)）是一款不用写代码也可
 
 ## 📱 支持的开发场景
 
-本仓库的 Skills 支持以下开发场景：
+本仓库的 Rules 支持以下开发场景：
 
 ### Web 应用开发
 - React + TypeScript + Vite 项目
