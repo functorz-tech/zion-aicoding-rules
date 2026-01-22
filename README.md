@@ -436,6 +436,7 @@ Rules 可以智能地协同工作。例如：
 ### Cursor 和 AI 开发
 
 * [Cursor 官方文档](https://cursor.sh/docs)
+* [Cursor 历史版本下载](https://cursorhistory.com/) - 下载 Cursor 2.4.18 及以上版本
 * Cursor Rules 最佳实践
 * [模型上下文协议 (MCP)](https://modelcontextprotocol.io)
 
@@ -469,7 +470,13 @@ Rules 可以智能地协同工作。例如：
 
 ### ⚠️ 关于 Cursor 版本
 
-本仓库使用 Cursor Rules 格式（`.mdc` 文件），适用于 **Cursor 2.4.18 及以上版本**。如果你使用的是 Cursor 2.3.41 及以上版本，也可以使用 Skills 格式的版本（请参考 [timqin-m/zion-aicoding-rules](https://github.com/timqin-m/zion-aicoding-rules)）。
+本仓库使用 Cursor Rules 格式（`.mdc` 文件），适用于 **Cursor 2.4.18 及以上版本**。
+
+**下载 Cursor**：
+* 最新版本：从 [Cursor 官网](https://cursor.sh) 下载
+* 历史版本：从 [Cursor 历史版本下载](https://cursorhistory.com/) 下载特定版本（支持 Windows、macOS、Linux）
+
+如果你使用的是 Cursor 2.3.41 及以上版本，也可以使用 Skills 格式的版本（请参考 [timqin-m/zion-aicoding-rules](https://github.com/timqin-m/zion-aicoding-rules)）。
 
 ---
 
